@@ -12,7 +12,7 @@ import com.dididi.uiextlib.ext.getScreeSize
 /**
  * @author dididi(yechao)
  * @since 27/05/2020
- * @describe
+ * @describe paint绘制官方提供图形
  */
 
 class PaintView : View {
@@ -73,6 +73,11 @@ class PaintView : View {
             drawLines(lines, paint)
             //圆角矩形
             drawRoundRect(x - 300f, y - 300f, x + 300f, y + 300f, 50f, 50f, paint)
+            paint.style = Paint.Style.FILL
+            //绘制弧形或扇形
+            //注意屏幕xy坐标系，是朝右下角的，所以正右是0度位置，顺时针为正，逆时针为负
+            drawArc(x - 200f, y - 200f, x + 200f, y + 200f, -90f, 90f, true, paint)
+            drawArc(x - 200f, y - 200f, x + 200f, y + 200f, 90f, 90f, true, paint)
         }
     }
 }
