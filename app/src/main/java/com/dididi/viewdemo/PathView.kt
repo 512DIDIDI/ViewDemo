@@ -36,12 +36,28 @@ class PathView : View {
 
     /**
      * 2.xxxTo()--------画线(直线或曲线)
+     * 注意 这是从当前位置，也就是path最后的坐标开始
      * xxxTo()参数使用的是绝对坐标(使用屏幕坐标)
      * rXXXTo()参数使用的是相对坐标(相对当前位置的坐标)
      */
     private val path2 = Path().apply {
+        //直线
         lineTo(100f, 100f)
         rLineTo(100f, 0f)
+        //贝塞尔曲线
+        //(二次贝塞尔曲线)
+        quadTo(200f,200f,300f,100f)
+        rQuadTo(100f,0f,200f,100f)
+        //移动当前位置，指定path的新起点
+        moveTo(100f,1000f)
+        //(三次贝塞尔曲线)
+        cubicTo(100f,1200f,200f,900f,300f,1100f)
+        //弧线 最后一个参数 forceMoveTo 用于需要强制移动到弧线的起点，等同于先调用一次moveTo,在画线
+        arcTo(300f,900f,400f,1300f,-90f,90f,true)
+        //addArc就是arcTo()，只是最后一个参数forceMoveTo为true的情况
+        addArc(400f,800f,400f,1000f,-80f,80f)
+        //闭合子图形，让path的首尾相连
+        close()
     }
 
     constructor(context: Context) : super(context)
