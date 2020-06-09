@@ -27,7 +27,6 @@ class PathView : View {
      * 1.addXXX()-------添加子图形
      * 最后一个参数dir ，有两个方向
      * [Path.Direction.CW] (顺时针) [Path.Direction.CCW] (逆时针)
-     * 如果重叠部分方向相反，则消除，方向相同，则叠加
      */
     private val path1 = Path().apply {
         addCircle(700f, 300f, 100f, Path.Direction.CCW)
@@ -60,6 +59,21 @@ class PathView : View {
         close()
     }
 
+    /**
+     * [Path.setFillType]
+     * 有四种填充模式（带INVERSE的是前两者的反色）
+     * 1. [Path.FillType.WINDING] (默认 与 [Path.Direction]有关 任一点与边界交点 顺时针+1 逆时针-1 最后结果不为0则填充，等于0则不填充)
+     * 2. [Path.FillType.EVEN_ODD] (任一点与边界交点为奇数则填充，为偶数则不填充)
+     * 3. [Path.FillType.INVERSE_WINDING]
+     * 4. [Path.FillType.INVERSE_EVEN_ODD]
+     * 具体原理可查看：https://hencoder.com/ui-1-1/
+     */
+    private val path3 = Path().apply {
+        addCircle(1400f,800f,100f,Path.Direction.CW)
+        addCircle(1500f,800f,100f,Path.Direction.CW)
+        fillType = Path.FillType.EVEN_ODD
+    }
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
@@ -75,6 +89,9 @@ class PathView : View {
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 10f
         canvas?.drawPath(path2,paint)
+        paint.style = Paint.Style.FILL
+        canvas?.drawPath(path3,paint)
+        paint.reset()
     }
 
 }

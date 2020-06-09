@@ -24,14 +24,19 @@ class PaintView : View {
         defStyleAttr
     )
 
-    val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.RED
-        style = Paint.Style.STROKE
-        strokeWidth = 10f
-    }
+    /**
+     * style三种模式 [Paint.Style.FILL]（填充）[Paint.Style.STROKE]（画线）[Paint.Style.FILL_AND_STROKE]（填充并画线）
+     */
+    val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
+    /**
+     * onDraw在每次viewPager切换时都会调用
+     */
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        paint.color = Color.RED
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 10f
         val point = context.getScreeSize()
         val x = point.x.toFloat() / 2
         val y = point.y.toFloat() / 2
@@ -76,6 +81,7 @@ class PaintView : View {
             paint.style = Paint.Style.FILL
             //绘制弧形或扇形
             //注意屏幕xy坐标系，是朝右下角的，所以正右是0度位置，顺时针为正，逆时针为负
+            //useCenter是否需要连接到圆心(false为弧形 true为扇形)
             drawArc(x - 200f, y - 200f, x + 200f, y + 200f, -90f, 90f, true, paint)
             drawArc(x - 200f, y - 200f, x + 200f, y + 200f, 90f, 90f, true, paint)
         }
