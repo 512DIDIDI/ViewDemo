@@ -1,66 +1,35 @@
 package com.dididi.viewdemo
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.dididi.viewdemo.fragment.BasicFragment
+import com.dididi.viewdemo.fragment.PaintFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            /**
-             * 避免viewStub重复加载
-             */
-            private var isInflated = false
-            val viewStub: ViewStub = itemView.findViewById<ViewStub>(R.id.fragmentViewStub).apply {
-                setOnInflateListener { _, _ ->
-                    isInflated = true
-                }
-            }
-
-            fun inflateView() {
-                if (!isInflated) {
-                    viewStub.inflate()
-                }
-            }
-        }
-    }
-
-    private val list = listOf(
-        "paint绘制" to R.layout.view_paint,
-        "path绘制" to R.layout.view_path,
-        "bitmap/text绘制" to R.layout.view_else,
-        "直方图绘制" to R.layout.view_histogram,
-        "饼状图" to R.layout.view_pied
+    private val fragmentList = listOf(
+        "绘制基础" to BasicFragment(),
+        "Paint详解" to PaintFragment()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //viewPager2+tabLayout的使用
-        activityMainVp.adapter = object : RecyclerView.Adapter<ViewHolder>() {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.fragment_view, parent, false)
-            )
-
-
-            override fun getItemCount() = list.size
-
-            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-                holder.viewStub.layoutResource = list[position].second
-                holder.inflateView()
-            }
-        }
+        val adapter = FragmentAdapter(this)
+        activityMainVp.adapter = adapter
         TabLayoutMediator(activityMainTab, activityMainVp) { tab, position ->
-            tab.text = list[position].first
+            tab.text = fragmentList[position].first
         }.attach()
+    }
+
+    private inner class FragmentAdapter(activity: AppCompatActivity) :
+        FragmentStateAdapter(activity) {
+        override fun getItemCount() = fragmentList.size
+
+        override fun createFragment(position: Int) = fragmentList[position].second
     }
 
 }

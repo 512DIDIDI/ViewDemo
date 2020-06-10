@@ -1,4 +1,4 @@
-package com.dididi.viewdemo
+package com.dididi.viewdemo.draw.basic
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.dididi.viewdemo.R
 
 
 /**
@@ -18,7 +19,9 @@ import android.view.View
 class ElseView : View {
 
     private val bitmap:Bitmap by lazy {
-        BitmapFactory.decodeResource(context.resources,R.mipmap.ic_launcher)
+        BitmapFactory.decodeResource(context.resources,
+            R.mipmap.ic_launcher
+        )
     }
 
     private val paint = Paint()

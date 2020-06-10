@@ -1,4 +1,4 @@
-package com.dididi.viewdemo
+package com.dididi.viewdemo.draw.basic
 
 import android.content.Context
 import android.graphics.Canvas

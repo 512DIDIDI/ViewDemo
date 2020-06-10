@@ -1,4 +1,4 @@
-package com.dididi.viewdemo
+package com.dididi.viewdemo.draw.basic
 
 import android.content.Context
 import android.graphics.Canvas
@@ -27,12 +27,24 @@ class PiedChartView : View {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private val explainPath = Path().apply {
-        moveTo(840f,440f)
-        rLineTo(-130f,-225f)
-        rLineTo(-100f,0f)
-        moveTo(750f,550f)
-        rLineTo(190f,190f)
-        rLineTo(100f,0f)
+        moveTo(840f,540f)
+        rLineTo(-135f,-234f)
+        rLineTo(-50f,0f)
+        moveTo(850f,550f)
+        rLineTo(234f,-135f)
+        rLineTo(50f,0f)
+        moveTo(850f,550f)
+        rLineTo(266f,47f)
+        rLineTo(30f,0f)
+        moveTo(850f,550f)
+        rLineTo(244f,114f)
+        rLineTo(40f,0f)
+        moveTo(850f,550f)
+        rLineTo(173f,206f)
+        rLineTo(50f,0f)
+        moveTo(850f,550f)
+        rLineTo(-155f,221f)
+        rLineTo(-50f,0f)
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -56,6 +68,17 @@ class PiedChartView : View {
         canvas?.drawArc(600f, 300f, 1100f, 800f, 30f, 39f, true, paint)
         paint.color = Color.CYAN
         canvas?.drawArc(600f, 300f, 1100f, 800f, 70f, 110f, true, paint)
+        paint.style = Paint.Style.FILL
+        paint.color = Color.WHITE
+        paint.textSize = 30f
+        canvas?.drawText("Lolipop",550f,320f,paint)
+        canvas?.drawText("Marshmallow",1140f,430f,paint)
+        canvas?.drawText("Gingerbread",1150f,612f,paint)
+        canvas?.drawText("Ice Cream Sandwich",1140f,679f,paint)
+        canvas?.drawText("Jelly Bean",1080f,771f,paint)
+        canvas?.drawText("KitKat",550f,786f,paint)
+        paint.textSize = 50f
+        canvas?.drawText("饼图",800f,900f,paint)
     }
 }
 

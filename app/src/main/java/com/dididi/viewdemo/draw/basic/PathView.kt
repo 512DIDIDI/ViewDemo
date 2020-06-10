@@ -1,4 +1,4 @@
-package com.dididi.viewdemo
+package com.dididi.viewdemo.draw.basic
 
 import android.content.Context
 import android.graphics.Canvas
@@ -91,7 +91,6 @@ class PathView : View {
         canvas?.drawPath(path2,paint)
         paint.style = Paint.Style.FILL
         canvas?.drawPath(path3,paint)
-        paint.reset()
     }
 
 }
