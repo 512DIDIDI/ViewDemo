@@ -1,4 +1,4 @@
-package com.dididi.viewdemo.draw.basic
+package com.dididi.viewdemo.view.basic
 
 import android.content.Context
 import android.graphics.Canvas
@@ -12,6 +12,9 @@ import android.view.View
  * @author dididi(yechao)
  * @since 03/06/2020
  * @describe 路径绘制自定义图形
+ * addXXX ： [Path.addCircle] [Path.addArc] ...
+ * xxxTo/rXXXTo ： [Path.lineTo] [Path.quadTo] [Path.cubicTo] [Path.rLineTo] ...
+ * [Path.FillType]
  */
 
 class PathView : View {

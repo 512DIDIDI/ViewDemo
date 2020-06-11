@@ -16,7 +16,7 @@ class ViewHolder(itemView:View) :RecyclerView.ViewHolder(itemView){
      * 避免viewStub重复加载
      */
     private var isInflated = false
-    val viewStub = itemView.findViewById<ViewStub>(R.id.fragmentViewStub).apply {
+    val viewStub: ViewStub = itemView.findViewById<ViewStub>(R.id.fragmentViewStub).apply {
         setOnInflateListener { _, _ ->
             isInflated = true
         }

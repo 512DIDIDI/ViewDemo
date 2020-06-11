@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.dididi.viewdemo.R
-import com.dididi.viewdemo.ViewHolder
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_view.*
 
 
@@ -21,7 +18,10 @@ import kotlinx.android.synthetic.main.fragment_view.*
 class PaintFragment :Fragment() {
 
     private val list = listOf(
-        "基本颜色" to R.layout.view_basic_color
+        "基本颜色与着色器" to R.layout.view_shader,
+        "颜色过滤器" to R.layout.view_filter,
+        "XferMode" to R.layout.view_xfermode,
+        "Paint属性" to R.layout.view_paint
     )
 
     override fun onCreateView(
@@ -33,29 +33,6 @@ class PaintFragment :Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        //viewPager2+tabLayout的使用
-        fragmentBasicVp.adapter = object : RecyclerView.Adapter<ViewHolder>() {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-                ViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(
-                            R.layout.item_view,
-                            parent,
-                            false
-                        )
-                )
-
-            override fun getItemCount() = list.size
-
-            override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-                holder.viewStub.layoutResource = list[position].second
-                holder.inflateView()
-            }
-
-            override fun getItemViewType(position: Int) = list[position].second
-        }
-        TabLayoutMediator(fragmentBasicTab, fragmentBasicVp) { tab, position ->
-            tab.text = list[position].first
-        }.attach()
+        bindViewpager2WithTabLayout(fragmentBasicVp,fragmentBasicTab,list)
     }
 }

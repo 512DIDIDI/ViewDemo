@@ -1,4 +1,4 @@
-package com.dididi.viewdemo.draw.paint
+package com.dididi.viewdemo.view.paint
 
 import android.content.Context
 import android.graphics.*
@@ -10,10 +10,12 @@ import com.dididi.viewdemo.R
 /**
  * @author dididi(yechao)
  * @since 10/06/2020
- * @describe 基本颜色
+ * @describe 基本颜色与着色器 [Paint.setShader]
+ * 设置基本颜色： [Paint.setColor] [Paint.setARGB]
+ * 着色器： [LinearGradient] [RadialGradient] [SweepGradient] [BitmapShader] [ComposeShader]
  */
 
-class BasicColor : View {
+class ShaderView : View {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
@@ -67,10 +69,36 @@ class BasicColor : View {
      * tileX 横向的tileMode
      * tileY 纵向的tileMode
      */
-    private val shader4 = BitmapShader(bitmap,Shader.TileMode.REPEAT,Shader.TileMode.MIRROR)
+    private val shader4 = BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR)
+
+    private val batman: Bitmap by lazy {
+        BitmapFactory.decodeResource(context.resources, R.mipmap.batman)
+    }
+
+    private val batmanLogo: Bitmap by lazy {
+        BitmapFactory.decodeResource(context.resources, R.mipmap.batman_logo)
+    }
+
+    /**
+     * 注意：着色器是从View的起始坐标(左上角)开始的，如果drawCircle在范围外，很可能无法看到图片，
+     * 因此这里TileMode选择了REPEAT
+     */
+    private val batmanShader = BitmapShader(batman,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT)
+
+    private val batmanLogoShader = BitmapShader(batmanLogo,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT)
+
+    /**
+     * 组合着色器
+     * 有17种模式(alpha通道和混合模式)
+     * [PorterDuff.Mode]
+     * 具体查看:https://developer.android.com/reference/android/graphics/PorterDuff.Mode.html
+     */
+    private val srcOutShader = ComposeShader(batmanShader,batmanLogoShader,PorterDuff.Mode.SRC_OVER)
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        //组合着色器需要关闭硬件加速
+        setLayerType(LAYER_TYPE_SOFTWARE,null)
         canvas?.also {
             paint.apply {
                 reset()
@@ -92,6 +120,9 @@ class BasicColor : View {
                 shader = shader4
                 //BitmapShader配合drawXXX使用 可绘制特定图形的bitmap填充方案
                 it.drawCircle(800f,700f,100f,this)
+                shader = srcOutShader
+                it.drawCircle(1200f,700f,300f,this)
+                it.drawRect(1300f,100f,1600f,400f,this)
             }
         }
     }

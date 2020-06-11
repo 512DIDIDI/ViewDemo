@@ -1,4 +1,4 @@
-package com.dididi.viewdemo.draw.basic
+package com.dididi.viewdemo.view.basic
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -14,6 +14,7 @@ import com.dididi.viewdemo.R
  * @author dididi(yechao)
  * @since 09/06/2020
  * @describe 绘制bitmap和文字
+ * [Canvas.drawBitmap] [Canvas.drawText]
  */
 
 class ElseView : View {

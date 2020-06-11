@@ -1,6 +1,6 @@
 ### 绘制基础
 
-* [Paint的相关使用以及drawXXX简单图形绘制](PaintView.kt)
+* [Paint的相关使用以及drawXXX简单图形绘制](BasicGraphView.kt)
   1. paint的color/style/stroke等属性设置
   2. 圆/矩形/扇形/点/线/圆角矩形等等基本图形的绘制
 * [Path路径绘制较复杂图形](PathView.kt)

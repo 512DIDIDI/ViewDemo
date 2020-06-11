@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private inner class FragmentAdapter(activity: AppCompatActivity) :
         FragmentStateAdapter(activity) {
         override fun getItemCount() = fragmentList.size
-
         override fun createFragment(position: Int) = fragmentList[position].second
     }
 

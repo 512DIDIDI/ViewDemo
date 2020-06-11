@@ -1,4 +1,4 @@
-package com.dididi.viewdemo.draw.basic
+package com.dididi.viewdemo.view.basic
 
 import android.content.Context
 import android.graphics.Canvas
@@ -13,9 +13,10 @@ import com.dididi.uiextlib.ext.getScreeSize
  * @author dididi(yechao)
  * @since 27/05/2020
  * @describe paint绘制官方提供图形
+ * 基本图形绘制： [Canvas.drawCircle] [Canvas.drawArc] [Canvas.drawRect] [Canvas.drawPoint] ...
  */
 
-class PaintView : View {
+class BasicGraphView : View {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
