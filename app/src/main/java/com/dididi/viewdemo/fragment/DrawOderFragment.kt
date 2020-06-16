@@ -1,11 +1,9 @@
 package com.dididi.viewdemo.fragment
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.dididi.viewdemo.R
 import kotlinx.android.synthetic.main.fragment_view.*
@@ -13,18 +11,13 @@ import kotlinx.android.synthetic.main.fragment_view.*
 
 /**
  * @author dididi(yechao)
- * @since 10/06/2020
- * @describe
+ * @since 16/06/2020
+ * @describe 绘制顺序
  */
 
-class PaintFragment :Fragment() {
-
+class DrawOderFragment :Fragment(){
     private val list = listOf(
-        "基本颜色与着色器" to R.layout.view_shader,
-        "颜色过滤器" to R.layout.view_filter,
-        "XferMode" to R.layout.view_xfermode,
-        "Paint属性(1)" to R.layout.view_paint1,
-        "Paint属性(2)" to R.layout.view_paint2
+        "绘制顺序" to R.layout.view_draw_order
     )
 
     override fun onCreateView(
@@ -39,3 +32,4 @@ class PaintFragment :Fragment() {
         bindViewpager2WithTabLayout(fragmentBasicVp,fragmentBasicTab,list)
     }
 }
+

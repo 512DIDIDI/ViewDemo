@@ -10,11 +10,11 @@ import com.dididi.viewdemo.R
 /**
  * @author dididi(yechao)
  * @since 11/06/2020
- * @describe 颜色过滤器 [Paint.setColorFilter]
- * [LightingColorFilter] [PorterDuffColorFilter] [ColorMatrixColorFilter]
+ * @describe 颜色过滤器
+ * [Paint.setColorFilter] : [LightingColorFilter] [PorterDuffColorFilter] [ColorMatrixColorFilter]
  */
 
-open class FilterView : View {
+class FilterView : View {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(

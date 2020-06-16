@@ -10,9 +10,9 @@ import com.dididi.viewdemo.R
 /**
  * @author dididi(yechao)
  * @since 10/06/2020
- * @describe 基本颜色与着色器 [Paint.setShader]
+ * @describe 基本颜色与着色器
  * 设置基本颜色： [Paint.setColor] [Paint.setARGB]
- * 着色器： [LinearGradient] [RadialGradient] [SweepGradient] [BitmapShader] [ComposeShader]
+ * 着色器： [Paint.setShader] : [LinearGradient] [RadialGradient] [SweepGradient] [BitmapShader] [ComposeShader]
  */
 
 class ShaderView : View {

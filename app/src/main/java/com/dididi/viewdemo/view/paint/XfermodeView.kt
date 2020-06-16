@@ -10,8 +10,8 @@ import com.dididi.viewdemo.R
 /**
  * @author dididi(yechao)
  * @since 11/06/2020
- * @describe 基于已有view，改变其方案 [Paint.setXfermode]
- *
+ * @describe 基于已有view，改变其方案
+ * [Paint.setXfermode] : [PorterDuffXfermode]
  */
 
 class XfermodeView :View{
