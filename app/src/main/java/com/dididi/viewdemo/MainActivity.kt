@@ -3,10 +3,7 @@ package com.dididi.viewdemo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dididi.viewdemo.fragment.BasicFragment
-import com.dididi.viewdemo.fragment.CanvasFragment
-import com.dididi.viewdemo.fragment.PaintFragment
-import com.dididi.viewdemo.fragment.TextFragment
+import com.dididi.viewdemo.fragment.*
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         "绘制基础" to BasicFragment(),
         "Paint详解" to PaintFragment(),
         "文字绘制" to TextFragment(),
-        "画布详解" to CanvasFragment()
+        "画布详解" to CanvasFragment(),
+        "属性动画" to AnimatorFragment()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
