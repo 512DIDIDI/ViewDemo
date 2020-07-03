@@ -5,8 +5,11 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.View
+import android.widget.Toast
 import com.dididi.uiextlib.ext.getScreeSize
+import com.dididi.uiextlib.ext.log
 
 
 /**
@@ -86,5 +89,14 @@ class BasicGraphView : View {
             drawArc(x - 200f, y - 200f, x + 200f, y + 200f, -90f, 90f, true, paint)
             drawArc(x - 200f, y - 200f, x + 200f, y + 200f, 90f, 90f, true, paint)
         }
+    }
+
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        when(event?.action){
+            KeyEvent.KEYCODE_BACK ->{
+                Toast.makeText(context, "拦截返回", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return true
     }
 }

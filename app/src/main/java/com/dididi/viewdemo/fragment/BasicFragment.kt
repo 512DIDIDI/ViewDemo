@@ -22,7 +22,8 @@ class BasicFragment :Fragment(){
         "path绘制" to R.layout.view_path,
         "bitmap/text绘制" to R.layout.view_else,
         "直方图绘制" to R.layout.view_histogram,
-        "饼状图" to R.layout.view_pied
+        "饼状图" to R.layout.view_pied,
+        "view的生命周期" to R.layout.view_lifecycle
     )
 
     override fun onCreateView(

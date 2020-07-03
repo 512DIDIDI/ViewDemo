@@ -7,3 +7,5 @@
   4. 练习-直方图绘制
   5. 练习-饼图绘制
 * [paint介绍](app/src/main/java/com/dididi/viewdemo/draw/paint/paint.md)
+
+  

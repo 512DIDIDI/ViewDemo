@@ -2,6 +2,7 @@ package com.dididi.viewdemo.view.animation
 
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.animation.TypeEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -15,7 +16,7 @@ import kotlin.math.min
 /**
  * @author dididi(yechao)
  * @since 18/06/2020
- * @describe
+ * @describe 颜色渐变 主要认识 [ObjectAnimator.setEvaluator]
  */
 
 class ArgbEvaluatorView : View {
@@ -27,9 +28,7 @@ class ArgbEvaluatorView : View {
         defStyleAttr
     )
 
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = 0xffff00
-    }
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private var color = 0
 
