@@ -1,6 +1,5 @@
 package com.dididi.viewdemo.view.animation
 
-import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context

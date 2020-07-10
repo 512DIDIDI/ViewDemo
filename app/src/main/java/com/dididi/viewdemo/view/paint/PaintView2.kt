@@ -195,7 +195,7 @@ class PaintView2 : View {
                 maskFilter = null
                 strokeWidth = 20f
                 it.drawPath(srcPath, this)
-                //获取srcPath轮廓，并将结果存进dstPath，仅在
+                //获取srcPath轮廓，并将结果存进dstPath
                 getFillPath(srcPath, dstPath)
                 //保存当前canvas状态
                 it.save()

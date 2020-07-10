@@ -13,7 +13,7 @@ import java.util.*
 /**
  * @author dididi(yechao)
  * @since 15/06/2020
- * @describe
+ * @describe 绘制文字
  */
 
 class DrawTextView : View {

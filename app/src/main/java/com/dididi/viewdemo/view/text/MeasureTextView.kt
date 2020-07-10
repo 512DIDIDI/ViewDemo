@@ -44,6 +44,10 @@ class MeasureTextView : View {
     private val textWidth = textPaint.measureText(text)
     private val charWidth = FloatArray(text.length)
     private val breakWidth = floatArrayOf()
+
+    /**
+     * 截取到maxWidth长度的文字，返回字符个数
+     */
     private val breakCount = textPaint.breakText(text,0,text.length,true,100f,breakWidth)
 
     override fun onDraw(canvas: Canvas?) {
@@ -74,7 +78,7 @@ class MeasureTextView : View {
                 it.drawRect(textBounds,pathPaint)
                 it.drawText(text,50f,50f+this.fontSpacing*4,this)
                 it.drawLine(50f,50f+this.fontSpacing*4,50f+textWidth,50f+this.fontSpacing*4,pathPaint)
-                //获取字符串内每个字符串的宽度
+                //获取字符串内每个字符的宽度
                 getTextWidths(text,charWidth)
                 it.drawText(text,0,breakCount,50f,50f+this.fontSpacing*5,this)
             }
