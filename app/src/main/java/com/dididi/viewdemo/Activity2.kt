@@ -1,5 +1,7 @@
 package com.dididi.viewdemo
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,14 @@ class Activity2 :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(LifecycleView2(this))
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.batman)
+        val dm = resources.displayMetrics
+        val densityDpi = dm.densityDpi
+
+        Log.d(
+            "BitmapSize",
+            "dpi:${densityDpi} | width:${bitmap.width} | height:${bitmap.height} | config:${bitmap.config.name} | size:${bitmap.getBitmapSize()}"
+        )
         Log.d(TAG, "activity2 onCreate: ")
     }
 
@@ -53,4 +63,6 @@ class Activity2 :AppCompatActivity(){
         super.onDestroy()
         Log.d(TAG, "activity2 onDestroy: ")
     }
+
+    fun Bitmap.getBitmapSize() = allocationByteCount
 }
